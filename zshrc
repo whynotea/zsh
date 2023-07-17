@@ -2,6 +2,10 @@ export LC_ALL=en_GB.UTF-8
 export LANG=en_GB.UTF-8
 export TERM=xterm-256color
 
+GO_PATH=/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GO_PATH:$GOPATH/bin
+
 source $BOOTSTRAP_ZSH/config/zsh
 
 if [[ -v BOOTSTRAP_BASH ]] ; then
