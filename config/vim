@@ -1,0 +1,4 @@
+if command -v vimx &> /dev/null ; then
+  alias vim='vimx -b -u $BOOTSTRAP_VIM/vimrc'
+fi
+

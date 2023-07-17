@@ -1,0 +1,3 @@
+alias goboot='cd $BOOTSTRAP'
+alias gozsh='cd $BOOTSTRAP_ZSH'
+alias gobash='cd $BOOTSTRAP_BASH'
