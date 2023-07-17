@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+if [[ -v TMUX ]]; then
+  if [[ ! -d $BOOTSTRAP_TMUX/plugins/tpm ]]; then
+    git clone --depth 1 https://github.com/tmux-plugins/tpm \
+      $BOOTSTRAP_TMUX/plugins/tpm
+  fi
+  if [[ ! -d $BOOTSTRAP_TMUX/plugins/tmux-resurrect ]]; then
+    git clone --depth 1 https://github.com/tmux-plugins/tmux-resurrect \
+      $BOOTSTRAP_TMUX/plugins/tmux-resurrect
+  fi
+  tmux source $BOOTSTRAP_TMUX/tmux.conf
+fi

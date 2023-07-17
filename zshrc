@@ -8,8 +8,8 @@ if [[ -v BOOTSTRAP_BASH ]] ; then
   export PATH=$BOOTSTRAP_BASH/bin:$PATH
 fi
 
-if [[ -v TMUX ]] && [[ -v BOOTSTRAP_TMUX ]] ; then
- tmux source $BOOTSTRAP_TMUX/tmux.conf
+if [[ -v BOOTSTRAP_TMUX ]] ; then
+ source $BOOTSTRAP_ZSH/config/tmux
 fi
 
 if [[ -v BOOTSTRAP_VIM ]] ; then
