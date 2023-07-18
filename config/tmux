@@ -11,3 +11,9 @@ if [[ -v TMUX ]]; then
   fi
   tmux source $BOOTSTRAP_TMUX/tmux.conf
 fi
+nts ()
+{
+  tmux new-session -d
+  sleep 1
+  tmux attach
+}
