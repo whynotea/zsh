@@ -16,7 +16,7 @@ if [[ -v BOOTSTRAP_TMUX ]] ; then
  source $BOOTSTRAP_ZSH/config/tmux
 fi
 
-if [[ -v BOOTSTRAP_VIM ]] ; then
+if [[ -v BOOTSTRAP_VIM ]] || [[ -v BOOTSTRAP_NVIM ]]; then
   source $BOOTSTRAP_ZSH/config/vim
 fi
 

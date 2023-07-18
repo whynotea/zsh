@@ -1,9 +1,5 @@
 #!/bin/zsh
 if command -v nvim &> /dev/null; then
-  if [[ ! -v BOOTSTRAP_NVIM ]]; then
-    git clone --depth 1 https://github.com/whynotea/nvim.git \
-      $BOOTSTRAP/include/nvim
-  fi
   export LUA_PATH="$BOOTSTRAP/include/nvim/?.lua;;"
   vim ()
   {
