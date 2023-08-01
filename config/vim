@@ -1,6 +1,5 @@
 #!/bin/zsh
 if command -v nvim &> /dev/null; then
-  export LUA_PATH="$BOOTSTRAP/include/nvim/?.lua;;"
   vim ()
   {
     XDG_CONFIG_HOME=$BOOTSTRAP/include nvim "$@"
