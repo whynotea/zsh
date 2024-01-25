@@ -2,6 +2,8 @@
 # installed.
 zstyle ":completion:*:commands" rehash 1
 
+ZSH_DISABLE_COMPFIX=true
+
 ZSH="$HOME/.oh-my-zsh"
 if [[ ! -a $ZSH ]]; then
   git clone https://github.com/robbyrussell/oh-my-zsh.git $ZSH
@@ -25,10 +27,18 @@ source $BOOTSTRAP_ZSH/config/plugins/zsh-vi-mode
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-vi-mode tmux)
+plugins=(git zsh-vi-mode)
+if command -v tmux &> /dev/null; then
+  plugins+=(tmux)
+fi
 if command -v kubectl &> /dev/null; then
   plugins+=(kubectl)
 fi
 source $ZSH/oh-my-zsh.sh
 
+# Cleans up directories used by zsh which are too open in permissions
+compaudit &> /dev/null
+if [[ $? -eq 1 ]]; then
+  compaudit | xargs chmod g-w &> /dev/null
+fi
 autoload -Uz compinit && compinit

@@ -1,7 +1,9 @@
 #!/bin/zsh
-if command -v nvim &> /dev/null; then
-  vim ()
-  {
-    XDG_CONFIG_HOME=$BOOTSTRAP/include nvim "$@"
-  }
+if command -v nvim &> /dev/null ; then
+  if ! [[ $OS = \"centos\" ]]; then 
+    vim ()
+    {
+      XDG_CONFIG_HOME=$BOOTSTRAP/include nvim "$@"
+    }
+  fi
 fi
