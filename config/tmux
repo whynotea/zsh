@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+export TMUX_TMPDIR=$BOOTSTRAP_TMUX/tmux_session
+
 if [[ -v TMUX ]]; then
   if [[ ! -d $BOOTSTRAP_TMUX/plugins/tpm ]]; then
     git clone --depth 1 https://github.com/tmux-plugins/tpm \

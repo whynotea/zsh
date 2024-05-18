@@ -1,0 +1,42 @@
+#!/bin/bash
+_Whynotea_complete()
+{
+	local cur prev
+
+	COMPREPLY=()
+	cur=${COMP_WORDS[COMP_CWORD]}
+	prev=${COMP_WORDS[COMP_CWORD-1]}
+	parent=${COMP_WORDS[COMP_CWORD-2]}
+
+	if [[ $COMP_CWORD -eq 1 ]]; then
+		COMPREPLY=( $(compgen -W "tmux" -- $cur) )
+	elif [[ $COMP_CWORD -eq 2 ]]; then
+		case "$prev" in
+		  "tmux")
+				COMPREPLY=( $(compgen -W "join leave" --$cur) )
+				;;
+			*)
+			  ;;
+		esac
+	elif [[ $COMP_CWORD -eq 3 ]]; then
+		case "$parent" in
+			"tmux")
+		    case "$prev" in
+		      "join")
+						COMPREPLY=( $(compgen -W "$(tmuxinator list | sed 's/tmuxinator projects://' | tr '[:space:]' ' ' | tr -s ' ' | tr ' ' '\n')" --$cur) )
+		    		;;
+		      "leave")
+						COMPREPLY=( $(compgen -W "$(tmuxinator list | sed 's/tmuxinator projects://' | tr '[:space:]' ' ' | tr -s ' ' | tr ' ' '\n')" --$cur) )
+		    		;;
+		    	*)
+		    	  ;;
+		    esac
+				;;
+		  *)
+		    ;;
+		esac
+	fi
+
+	return 0
+} &&
+complete -F _Whynotea_complete Whynotea
