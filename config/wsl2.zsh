@@ -6,11 +6,13 @@ else
   # The following checks if systemd is running as a pid other than 1
   ps -ef | grep -v grep | grep -q systemd
   if [[ $? == 0 ]]; then
-    # If it is running, then check if podman returns an error
-    podman ps &> /dev/null
-    if [[ $? != 0 ]]; then
-      # If it is returning an error then try running system migrate
-      podman system migrate
+    if command -v podman &> /dev/null; then
+      # If it is running, then check if podman returns an error
+      podman ps &> /dev/null
+      if [[ $? != 0 ]]; then
+        # If it is returning an error then try running system migrate
+        podman system migrate
+      fi
     fi
   fi
   # Finally, add the WSL2 and Windows paths to the main PATH
