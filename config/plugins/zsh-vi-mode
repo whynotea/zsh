@@ -3,3 +3,4 @@ if [[ ! -d $BOOTSTRAP_ZSH/plugins/zsh-vi-mode ]]; then
     $BOOTSTRAP_ZSH/plugins/zsh-vi-mode
 fi
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
+ZVM_VI_VISUAL_ESCAPE_BINDKEY=jj
