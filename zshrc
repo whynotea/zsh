@@ -46,3 +46,10 @@ fi
 if [[ -n $WHYNOTEA_CMD ]]; then
   eval "$WHYNOTEA_CMD"
 fi
+
+if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+command -v flux >/dev/null && . <(flux completion zsh)
+command -v helm >/dev/null && . <(helm completion zsh)
+command -v helm >/dev/null && . <(k3d completion zsh)

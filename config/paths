@@ -5,8 +5,8 @@ export GOPATH=$HOME/go
 PATH_GO=/usr/local/go/bin:$GOPATH/bin
 PATH_NEOVIM=$BOOTSTRAP_NVIM/versions/nvim-linux64/bin
 PATH_NODE=/usr/local/lib/nodejs/nodejs-latest/bin
-PATH_MAVEN=~/Applications/apache-maven-3.9.6/bin
-PATH_WHYNOTEA=${PATH_BOOTSTRAP_BASH}/home/whynotea/bin:/home/whynotea/.local/bin:$PATH_NEOVIM:$PATH_GO:$PATH_NODE:$PATH_MAVEN
+PATH_JAVA=${JAVA_HOME}/bin:${MAVEN_HOME}/bin:~/Applications/apache-maven-3.9.6/bin
+PATH_WHYNOTEA=${PATH_BOOTSTRAP_BASH}/home/whynotea/bin:/home/whynotea/.local/bin:$PATH_NEOVIM:$PATH_GO:$PATH_NODE:$PATH_JAVA
 
 PATH_FEDORA=/usr/lib64/ccache:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 
