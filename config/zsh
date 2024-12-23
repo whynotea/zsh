@@ -9,6 +9,9 @@ if [[ ! -a $ZSH ]]; then
   git clone https://github.com/robbyrussell/oh-my-zsh.git $ZSH
 fi
 
+if [[ ! -f ~/.p10k.zsh ]]; then
+  cp $BOOTSTRAP_ZSH/config/p10k.zsh ~/.p10k.zsh
+fi
 #ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 

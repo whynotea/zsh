@@ -1,3 +1,8 @@
+if [[ -z "$WSL_DISTRO_NAME" && -z "$WHYNOTEA_WSL_NS" ]]; then
+  # Not running on WSL
+  return 0
+fi
+
 # Determine if SystemD is running as pid 1
 SYSDPID=$(ps -eo cmd,pid | grep -m 1 ^/lib/systemd/systemd | awk '{print $2}')
 if [[ ! -z "$SYSDPID" ]] && [[ "$SYSDPID" == "1" ]]; then
@@ -15,8 +20,9 @@ else
       fi
     fi
   fi
-  # Finally, add the WSL2 and Windows paths to the main PATH
-  export PATH=$PATH:$PATH_WSL2:$PATH_WINDOWS
+  if [[ -z "$WHYNOTEA_WSL_NS" ]]; then
+    # Finally, add the WSL2 and Windows paths to the main PATH
+    export PATH=$PATH:$PATH_WSL2:$PATH_WINDOWS
+  fi
 fi
-
 
