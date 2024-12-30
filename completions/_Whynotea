@@ -1,0 +1,57 @@
+#compdef Whynotea
+
+_Whynotea(){
+	local line state
+
+	_arguments -C -s -S : \
+		'-h[help]' \
+		'-v[verbose]' \
+		"1: :->cmds" \
+		"*::arg:->args"
+
+	case "$state" in
+		cmds)
+				_values "Whynotea command" \
+								"boot[bootstrap linux distros]"
+				;;
+		args)
+			case $line[1] in
+				boot)
+					_Whynotea_boot
+					;;
+			esac
+			;;
+	esac
+}
+
+_Whynotea_boot(){
+	local line state
+
+	_arguments -C -s -S : \
+		'-h[help]' \
+		'-v[verbose]' \
+		"1: :->cmds" \
+		"*::arg:->args"
+
+	case "$state" in
+		cmds)
+				_values "Whynotea_boot command" \
+								"wsl2[bootstrap a wsl2 linux distro]"
+				;;
+		args)
+			case $line[1] in
+				wsl2)
+					_Whynotea_boot_wsl2
+					;;
+			esac
+			;;
+	esac
+}
+
+_Whynotea_boot_wsl2(){
+	local line state
+
+	_arguments -C -s -S : \
+		'-h[help]' \
+		'-v[verbose]'
+}

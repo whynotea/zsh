@@ -41,6 +41,8 @@ fi
 
 if [[ -d $BOOTSTRAP_ZSH/completions ]]; then
   source $BOOTSTRAP_ZSH/completions/*
+  fpath=($BOOTSTRAP_ZSH/completions $fpath)
+  compdef _Whynotea Whynotea
 fi
 
 if [[ -n $WHYNOTEA_CMD ]]; then
