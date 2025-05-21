@@ -22,7 +22,7 @@ else
   fi
   if [[ -z "$WHYNOTEA_WSL_NS" ]]; then
     # Finally, add the WSL2 and Windows paths to the main PATH
-    export PATH=$PATH:$PATH_WSL2:$PATH_WINDOWS
+    export PATH=$PATH:$PATH_ORIG
   fi
 fi
 

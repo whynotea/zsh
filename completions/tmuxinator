@@ -1,5 +1,5 @@
-tmuxinator_completion=/usr/local/share/zsh/site-functions/_tmuxinator
-if [[ ! -f $tmuxinator_completion ]]; then
-  sudo mkdir -p $(dirname $tmuxinator_completion)
-  sudo wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O $tmuxinator_completion
-fi
+#tmuxinator_completion=/usr/local/share/zsh/site-functions/_tmuxinator
+#if [[ ! -f $tmuxinator_completion ]]; then
+#  sudo mkdir -p $(dirname $tmuxinator_completion)
+#  sudo wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O $tmuxinator_completion
+#fi
