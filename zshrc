@@ -1,13 +1,15 @@
-export LC_ALL=en_GB.UTF-8
-export LANG=en_GB.UTF-8
+OS=`cat /etc/os-release | egrep ^ID=`
+export OS=${OS#"ID="}
+
+if [[ "$OS" != '"centos"' ]]; then
+  export LC_ALL=en_GB.UTF-8
+  export LANG=en_GB.UTF-8
+fi
 export PODMAN_IGNORE_CGROUPSV1_WARNING=true
 # Anaconda bug requires TERMINFO to be set: https://github.com/ContinuumIO/anaconda-issues/issues/331
 #export TERMINFO="/usr/share/terminfo"
 export TERM=xterm-256color xterm screen
 export EDITOR=vim
-
-OS=`cat /etc/os-release | egrep ^ID=`
-export OS=${OS#"ID="}
 
 source $BOOTSTRAP_ZSH/config/paths
 
