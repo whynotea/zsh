@@ -1,4 +1,4 @@
-OS=`cat /etc/os-release | egrep ^ID=`
+OS=$(cat /etc/os-release | egrep ^ID=)
 export OS=${OS#"ID="}
 
 if [[ "$OS" != '"centos"' ]]; then
@@ -41,9 +41,9 @@ if [[ -d $BOOTSTRAP_ZSH/completions ]]; then
   compdef _Whynotea Whynotea
 fi
 
-if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
+# if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+#   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# fi
 
 command -v flux >/dev/null && . <(flux completion zsh)
 command -v helm >/dev/null && . <(helm completion zsh)
@@ -52,4 +52,3 @@ command -v k3d >/dev/null && . <(k3d completion zsh)
 if [[ -n $WHYNOTEA_CMD ]]; then
   eval "$WHYNOTEA_CMD"
 fi
-
