@@ -1,4 +1,14 @@
-_Whynotea(){
+#compdef Whynotea
+compdef _whynotea Whynotea
+
+_whynotea(){
+  local shellCompDirectiveError=1
+  local shellCompDirectiveNoSpace=2
+  local shellCompDirectiveNoFileComp=4
+  local shellCompDirectiveFilterFileExt=8
+  local shellCompDirectiveFilterDirs=16
+  local shellCompDirectiveKeepOrder=32
+
   local line state
 
   _arguments -C -s -S : \
@@ -15,14 +25,14 @@ _Whynotea(){
     args)
       case $line[1] in
         boot)
-          _Whynotea_boot
+          _whynotea_boot
           ;;
       esac
       ;;
   esac
 }
 
-_Whynotea_boot(){
+_whynotea_boot(){
   local line state
 
   _arguments -C -s -S : \
@@ -39,17 +49,23 @@ _Whynotea_boot(){
     args)
       case $line[1] in
         wsl2)
-          _Whynotea_boot_wsl2
+          _whynotea_boot_wsl2
           ;;
       esac
       ;;
   esac
 }
 
-_Whynotea_boot_wsl2(){
+_whynotea_boot_wsl2(){
   local line state
 
   _arguments -C -s -S : \
     '-h[help]' \
     '-v[verbose]'
 }
+
+# don't run the completion function when being source-ed or eval-ed
+if [ "$funcstack[1]" = "_whynotea" ]; then
+    _whynotea
+fi
+compdef _whynotea Whynotea

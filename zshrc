@@ -1,49 +1,41 @@
 OS=$(cat /etc/os-release | egrep ^ID=)
 export OS=${OS#"ID="}
 
-if [[ "$OS" != '"centos"' ]]; then
-  export LC_ALL=en_GB.UTF-8
-  export LANG=en_GB.UTF-8
+if [[ "$OS" == '"centos"' ]]; then
+  source $BOOTSTRAP_ZSH/os/centos.zsh
+else
+  source $BOOTSTRAP_ZSH/os/linux.zsh
 fi
+
 export PODMAN_IGNORE_CGROUPSV1_WARNING=true
-# Anaconda bug requires TERMINFO to be set: https://github.com/ContinuumIO/anaconda-issues/issues/331
-#export TERMINFO="/usr/share/terminfo"
 export TERM=xterm-256color xterm screen
 export EDITOR=vim
 
-source $BOOTSTRAP_ZSH/config/paths
-
+source $BOOTSTRAP_ZSH/config/paths.zsh
 source $BOOTSTRAP_ZSH/config/wsl2.zsh
 source $BOOTSTRAP_ZSH/config/functions.zsh
-source $BOOTSTRAP_ZSH/config/zsh
 
 if [[ -n $BOOTSTRAP_BASH ]] ; then
   export EDITOR=Editor
 fi
 
 if [[ -n $BOOTSTRAP_TMUX ]] ; then
- source $BOOTSTRAP_ZSH/config/tmux
+  source $BOOTSTRAP_ZSH/config/tmux.zsh
 fi
 
 if [[ -n $BOOTSTRAP_VIM ]] || [[ -n $BOOTSTRAP_NVIM ]]; then
-  source $BOOTSTRAP_ZSH/config/vim
+  source $BOOTSTRAP_ZSH/config/vim.zsh
 fi
 
-source $BOOTSTRAP_ZSH/config/alias
+source $BOOTSTRAP_ZSH/config/alias.zsh
 
 if [[ -n $BOOTSTRAP_WORK ]] ; then
   source $BOOTSTRAP_WORK/zshrc
 fi
 
-if [[ -d $BOOTSTRAP_ZSH/completions ]]; then
-  source $BOOTSTRAP_ZSH/completions/*
-  fpath=($BOOTSTRAP_ZSH/completions $fpath)
-  compdef _Whynotea Whynotea
-fi
-
-# if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-#   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# fi
+## if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+##   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+## fi
 
 command -v flux >/dev/null && . <(flux completion zsh)
 command -v helm >/dev/null && . <(helm completion zsh)
@@ -51,4 +43,9 @@ command -v k3d >/dev/null && . <(k3d completion zsh)
 
 if [[ -n $WHYNOTEA_CMD ]]; then
   eval "$WHYNOTEA_CMD"
+fi
+zstyle ':completion:*:options' insert-equals true
+source $BOOTSTRAP_ZSH/config/zsh.zsh
+if [[ -n $BOOTSTRAP_WORK ]] ; then
+  source $BOOTSTRAP_WORK/completion_links.zsh
 fi
