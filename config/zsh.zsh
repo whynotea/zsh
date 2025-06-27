@@ -4,16 +4,14 @@ zstyle ":completion:*:commands" rehash 1
 
 ZSH_DISABLE_COMPFIX="true"
 
-ZSH="$HOME/.oh-my-zsh"
-if [[ ! -a $ZSH ]]; then
-  git clone https://github.com/robbyrussell/oh-my-zsh.git $ZSH
-fi
+ZSH="${XDG_DATA_HOME}/oh-my-zsh"
+# if [[ ! -a $ZSH ]]; then
+#   git clone https://github.com/robbyrussell/oh-my-zsh.git $ZSH
+# fi
 
-if [[ ! -f ~/.p10k.zsh ]]; then
-  cp $BOOTSTRAP_ZSH/config/p10k.zsh ~/.p10k.zsh
-fi
 #ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL9K_CONFIG_FILE="$BOOTSTRAP/.p10k.zsh"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -32,9 +30,9 @@ source $BOOTSTRAP_ZSH/config/plugins/*
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-vi-mode)
-if command -v tmux &> /dev/null; then
-  plugins+=(tmux)
-fi
+# if command -v tmux &> /dev/null; then
+#   plugins+=(tmux)
+# fi
 if command -v kubectl &> /dev/null; then
   plugins+=(kubectl)
 fi

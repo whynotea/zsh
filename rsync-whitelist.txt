@@ -1,0 +1,10 @@
+- .git*
++ completions/***
++ config/***
++ os/***
++ plugins/***
++ themes/***
++ README.md
++ zshrc
++ rsync-whitelist.txt
+- *

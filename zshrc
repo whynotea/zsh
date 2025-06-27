@@ -1,6 +1,3 @@
-OS=$(cat /etc/os-release | egrep ^ID=)
-export OS=${OS#"ID="}
-
 if [[ "$OS" == '"centos"' ]]; then
   source $BOOTSTRAP_ZSH/os/centos.zsh
 else
@@ -33,9 +30,13 @@ if [[ -n $BOOTSTRAP_WORK ]] ; then
   source $BOOTSTRAP_WORK/zshrc
 fi
 
-## if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-##   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-## fi
+if [[ -n $BOOTSTRAP_CENTOS ]] && [[ -f $BOOTSTRAP_CENTOS/zshrc ]]; then
+  source $BOOTSTRAP_CENTOS/zshrc
+fi
+
+# if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+#   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# fi
 
 command -v flux >/dev/null && . <(flux completion zsh)
 command -v helm >/dev/null && . <(helm completion zsh)
@@ -44,7 +45,6 @@ command -v k3d >/dev/null && . <(k3d completion zsh)
 if [[ -n $WHYNOTEA_CMD ]]; then
   eval "$WHYNOTEA_CMD"
 fi
-zstyle ':completion:*:options' insert-equals true
 source $BOOTSTRAP_ZSH/config/zsh.zsh
 if [[ -n $BOOTSTRAP_WORK ]] ; then
   source $BOOTSTRAP_WORK/completion_links.zsh
