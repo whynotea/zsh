@@ -29,7 +29,7 @@ source $BOOTSTRAP_ZSH/config/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-vi-mode)
+plugins=(zsh-vi-mode)
 if command -v tmux &> /dev/null; then
   plugins+=(tmux)
 fi

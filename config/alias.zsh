@@ -6,3 +6,4 @@ alias govim='cd $BOOTSTRAP_NVIM'
 alias gotmux='cd $BOOTSTRAP_TMUX'
 alias gowork='cd $BOOTSTRAP_WORK'
 alias tmux='tmux new-session -A -s tmerrigan'
+alias bootstrap="source $BOOTSTRAP/.zshrc"
