@@ -30,9 +30,9 @@ source $BOOTSTRAP_ZSH/config/plugins/*
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-vi-mode)
-# if command -v tmux &> /dev/null; then
-#   plugins+=(tmux)
-# fi
+if command -v tmux &> /dev/null; then
+  plugins+=(tmux)
+fi
 if command -v kubectl &> /dev/null; then
   plugins+=(kubectl)
 fi
