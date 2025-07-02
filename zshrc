@@ -6,12 +6,6 @@ export PODMAN_IGNORE_CGROUPSV1_WARNING=true
 export TERM=xterm-256color xterm screen
 export EDITOR=vim
 
-source $BOOTSTRAP_ZSH/config/paths.zsh
-if [[ -n $WSL_DISTRO_NAME ]] || [[ -n $WHYNOTEA_WSL_NS ]]; then
-  source $BOOTSTRAP_ZSH/config/wsl2.zsh
-else
-  source $BOOTSTRAP_ZSH/config/linux.zsh
-fi
 source $BOOTSTRAP_ZSH/config/functions.zsh
 
 if [[ -n $BOOTSTRAP_BASH ]] ; then
@@ -50,19 +44,4 @@ fi
 source $BOOTSTRAP_ZSH/config/zsh.zsh
 if [[ -n $BOOTSTRAP_WORK ]] ; then
   source $BOOTSTRAP_WORK/completion_links.zsh
-fi
-
-DISABLE_AUTO_TITLE="true"
-
-hostname=$(hostname)
-pattern='worktrees_'
-if ! [[ "$hostname" =~ $pattern ]]; then
-  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    tabname=${hostname##*-}
-    username=$(whoami)
-    print -Pn "\e]0;REMOTE $username@$tabname\a"
-  else
-    print -Pn "\e]0;LOCAL\a"
-    export WHYNOTEA_P10K_SHOW_GIT="true"
-  fi
 fi
