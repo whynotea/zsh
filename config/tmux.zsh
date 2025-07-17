@@ -3,7 +3,7 @@
 export TMUX_TMPDIR=$BOOTSTRAP_TMUX/tmux_session
 
 if [[ -n $TMUX ]]; then
-  if [[ $BOOTSTRAP_CENTOS/bin/tmux ]]; then
+  if [[ -n ${BOOTSTRAP_CENTOS} ]] && [[ -f ${BOOTSTRAP_CENTOS}/bin/tmux ]]; then
     $BOOTSTRAP_CENTOS/bin/tmux source $BOOTSTRAP_TMUX/tmux.conf
   else
     if [[ ! -d $BOOTSTRAP_TMUX/plugins/tpm ]]; then

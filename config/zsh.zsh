@@ -5,9 +5,9 @@ zstyle ":completion:*:commands" rehash 1
 ZSH_DISABLE_COMPFIX="true"
 
 ZSH="${XDG_DATA_HOME}/oh-my-zsh"
-# if [[ ! -a $ZSH ]]; then
-#   git clone https://github.com/robbyrussell/oh-my-zsh.git $ZSH
-# fi
+if [[ ! -a $ZSH ]]; then
+  git clone https://github.com/robbyrussell/oh-my-zsh.git $ZSH
+fi
 
 #ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel10k/powerlevel10k"
