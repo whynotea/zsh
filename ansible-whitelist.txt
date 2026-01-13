@@ -1,0 +1,8 @@
++ completions/***
++ config/***
++ os/***
++ plugins/***
++ themes/***
++ README.md
++ zshrc
+- *
